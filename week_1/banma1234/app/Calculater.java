@@ -1,4 +1,4 @@
-package week_1.app;
+package week_1.banma1234.app;
 
 public class Calculater {
 	private String number;

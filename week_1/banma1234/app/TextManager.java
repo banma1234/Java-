@@ -1,4 +1,4 @@
-package week_1.app;
+package week_1.banma1234.app;
 
 public class TextManager {
 	public void startMsg() {	// 프로그램 최초 구동시 출력
