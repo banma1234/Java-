@@ -20,30 +20,35 @@ public class App {
 		String inputText = "";
 		boolean isStop = false;		// 반복문 탈출을 제어하는 flag
 		
-		do {	// 최초진행
-			inputText = "";
-			msg.displayMsg(cal.getDisplay());		// 'cal'의 display값을 불러와 msg.displayMsg()에 전달
-			msg.inputMsg();	inputText = sc.next();	// 사용자값 입력
+		try {
+			do {	// 최초진행
+				inputText = "";
+				msg.displayMsg(cal.getDisplay());		// 'cal'의 display값을 불러와 msg.displayMsg()에 전달
+				msg.inputMsg();	inputText = sc.next();	// 사용자값 입력
+				
+				if (inputText.equals("q")) {
+					isStop = true;
+				} else if (inputText.equals("clear")) {
+					cal.init();
+				} else if (inputText.equals("=")) {
+					cal.setOperator("=");
+					msg.endMsg(cal.getResult());
+					cal.init();
+				} else {
+					cal.inputHandler(inputText);
+				}
+					/* 사용자의 입력값에 따라 로직 처리
+					 - 'q' : 반복문 탈출
+					 - 'clear' : 모든 데이터 초기화
+					 - '=' : 계산 종료 및 안내문 출력
+					 - 그외 : 계산 진행
+					*/
+				
+			} while (!isStop);	// flag가 true라면 반복문 종료
 			
-			if (inputText.equals("q")) {
-				isStop = true;
-			} else if (inputText.equals("clear")) {
-				cal.init();
-			} else if (inputText.equals("=")) {
-				cal.setOperator("=");
-				msg.endMsg(cal.getResult());
-				cal.init();
-			} else {
-				cal.inputHandler(inputText);
-			}
-				/* 사용자의 입력값에 따라 로직 처리
-				 - 'q' : 반복문 탈출
-				 - 'claer' : 모든 데이터 초기화
-				 - '=' : 계산 종료 및 안내문 출력
-				 - 그외 : 계산 진행
-				*/
-			
-		} while (!isStop);	// flag가 true라면 반복문 종료
+		} catch(NumberFormatException e) {	// 잘못된 값 입력시 호출
+			msg.errorMsg(e);
+		}
 	}
 
 }

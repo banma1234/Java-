@@ -21,4 +21,9 @@ public class TextManager {
 		System.out.println("==================================");
 		System.out.println("종료하시려면 'q'를 입력해주세요.\n");
 	}
+	
+	public void errorMsg(NumberFormatException e) {	// 잘못된 값 입력시 출력
+		System.out.println("에러코드 : " + e);
+		System.out.println("잘못된 값을 입력하셨습니다.");
+	}
 }
