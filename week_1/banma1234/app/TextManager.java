@@ -9,7 +9,7 @@ public class TextManager {
 		System.out.println("==================================");
 		System.out.println("display | " + input);
 		System.out.println("==================================\n");
-	};
+	}
 	
 	public void inputMsg() {	// 사용자 값 입력시 출력
 		System.out.print("입력 : ");
